@@ -24,10 +24,10 @@ const transferModel = {
     });
   },
 
-  searchByName: (body)=>{
+  searchByName: (body, name)=>{
     return new Promise((resolve, reject) =>{
-      const {receiver_name} = req.param
-      const query= `SELECT * FROM profile WHERE receiver_name LIKE '%${receiver_name}%' ORDER BY receiver_name ASC`
+      // const {receiver_name} = req.params
+      const query= `SELECT * FROM transfer WHERE receiver_name LIKE '%${name}%' ORDER BY receiver_name ASC`
        db.query(query, body, (err, data) => {
         if (!err) {
             resolve(data);

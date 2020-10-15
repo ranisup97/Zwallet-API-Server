@@ -23,9 +23,9 @@ module.exports = {
   },
 
   searchByName: (req, res) =>{
-    const {receiver_name} = req.query;
+    const {name} = req.query;
     transferModel
-    .searchByName( req.body, receiver_name)
+    .searchByName( req.body, name)
     .then((data) => {
       
         res.status(200).send({
