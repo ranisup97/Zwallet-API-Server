@@ -5,7 +5,7 @@ module.exports = {
 
   getPagination: (req, res) =>{
     let {page, limit} = req.query
-    transferModel
+    userModel
     .getPagination(req.body, page, limit)
     .then((data) =>{
       res.status(200).send({
@@ -37,6 +37,7 @@ module.exports = {
   },
 
   createUser: (req, res) => {//post user
+    req.body.photo = req.file ? req.file.filename : '';
     userModel
       .createUser(req.body)
       .then((data) => {
@@ -53,6 +54,14 @@ module.exports = {
           });
       });
     },
+
+  //   createUser:  (req, res) => {
+  //   req.body.photo = req.file ? req.file.filename : '';
+  //   userModel
+  //     .createUser(req.body)
+  //     .then((data) => formResponse(data, res, 201))
+  //     .catch((err) => console.log(err));
+  // },
 
     deleteUser: (req, res) => {
     userModel
@@ -73,6 +82,8 @@ module.exports = {
   },
 
   updatePUT: (req, res) => {
+    
+    req.body.photo = req.file.filename;
     userModel
       .updatePUT(req.body, req.params.id)
       .then((data) => {
@@ -90,5 +101,12 @@ module.exports = {
       });
   },
 
+  // updateUser:  (req, res) => {
+  //   req.body.photo = req.file.filename;
+  //   userModel
+  //     .updateUser(req.body, req.params.id)
+  //     .then((data) => formResponse(data, res, 200))
+  //     .catch((err) => console.log(err));
+  // },
 
 };

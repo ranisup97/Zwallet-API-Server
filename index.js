@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const userRoute = require("./src/Routes/Users");
 const authRoute = require("./src/Routes/Auth");
-const uploadRoute = require("./src/Routes/Upload");
+// const uploadRoute = require("./src/Routes/Upload");
 const transferRoute = require("./src/Routes/Transfer");
 const topupRoute = require("./src/Routes/Topup");
 const cors = require("cors");
@@ -25,7 +25,7 @@ app.get("/", (request, response) => {
 
 app.use('/api/v1/users', userRoute)
 app.use('/api/v1/auth', authRoute)
-app.use('/api/v1/uploads', uploadRoute)
+// app.use('/api/v1/uploads', uploadRoute)
 app.use('/api/v1/transfer', transferRoute)
 app.use('/api/v1/topup', topupRoute)
 
